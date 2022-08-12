@@ -24,13 +24,17 @@ public class dateWisePartitions extends dateObj {
     class res {
         Date a, b;
         int stock;
-        Set<Integer> indices;
+        List<Integer> indices;
 
         res(Date a, Date b, int stock, Set<Integer> indices) {
             this.a = a;
             this.b = b;
             this.stock = stock;
-            this.indices = indices;
+//            this.indices = indices;
+            this.indices = new ArrayList<Integer>();
+            for (int x : indices) {
+                this.indices.add(x);
+            }
         }
     }
 
@@ -76,16 +80,18 @@ public class dateWisePartitions extends dateObj {
                 }
                 if (sep.get(i).isStart == true) {
                     sum += sep.get(i).stock;
-                    s.add(i);
+                    s.add(sep.get(i).index);
                 } else {
                     sum -= sep.get(i).stock;
-                    s.remove(i);
+                    s.remove(sep.get(i).index);
                 }
             }
         }
         for(int i = 0; i < result.size(); i++)
         {
-            System.out.println("From " + sdf.format(result.get(i).a) + " to " + sdf.format(result.get(i).b) + ", Stock = "+ result.get(i).stock);
+            System.out.print("From " + sdf.format(result.get(i).a) + " to " + sdf.format(result.get(i).b) + ", Stock = "+ result.get(i).stock + ", indices = ");
+            for (int x : result.get(i).indices) System.out.print(x + " ");
+            System.out.println();
         }
     }
 
