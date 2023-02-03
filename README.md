@@ -1,4 +1,4 @@
-# Tectes
+# Inventory Tracker
 A simple Java program to track stock of items.
 Sample input:
 ```java = 
